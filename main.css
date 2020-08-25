@@ -1,0 +1,16 @@
+.container{
+    width : 90%;
+    height: 85vh;
+    border: 1px solid black;
+    margin : 30px auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+    padding : 10px;
+}
+.menuBtn{
+    width : 150px;
+    height : 50px;
+    margin : 10px;
+}
