@@ -1,25 +1,56 @@
+.board-container{
+    height : 95%;
+    display : grid;
+    grid-template-columns: 5fr 1fr;
+}
 .board{
-    height: 75vh;
-    display:grid;
+    display : grid;
     grid-template-rows: repeat(9,1fr);
     grid-template-columns: repeat(9,1fr);
 }
+#sidebar{
+    display : grid;
+    grid-template-rows : 1fr 3fr 1fr;
+}
 #tools{
-    margin-top: 20px;
+    margin: 5px;
+    display: flex;
+    flex-flow: wrap;
+    place-content: center;
+}
+#keyboard{
+    margin: 5px;
     display:none;
+    flex-flow: wrap;
+    place-content: center;
+}
+.number-button{
+    width : 30px;
+    height: 30px;
+    margin: 1px;
+}
+#clear-button{
+    margin: 1px;
+    width: 94px;
 }
 .inputBox{
-    border: 1px solid black;
+    position: relative;
 }
 input{
-    width:100%;
-    height:100%;
+    width:90%;
+    height:90%;
     font-size : 1.3rem;
+    text-align: center;
+}
+.fixed{
+    font-weight: bold;
+    color: rgba(43, 42, 42, 0.795);
 }
 .hints{
-    position:relative;
-    top : -100%;
-    left: 0px;
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left : 0px;
     font-size : 0.8rem;
     color : grey;
 }

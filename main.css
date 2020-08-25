@@ -1,13 +1,15 @@
 .container{
-    width : 90%;
-    height: 85vh;
+    width : 95vw;
+    height : 95vh;
     border: 1px solid black;
-    margin : 30px auto;
+    margin : 5px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
     justify-content: center;
     align-content: center;
-    padding : 10px;
+}
+.container-game{
+    grid-template-rows: 1fr;
+    padding-top: 5px;
 }
 .menuBtn{
     width : 150px;
