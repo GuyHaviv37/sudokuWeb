@@ -1,8 +1,11 @@
+/*
+Board generating is reliant upon : https://www.sudokuoftheday.com/about/difficulty/
+*/
 const ROW_DIM = 9;
 const COL_DIM = 9;
-const EASY_MODE = 50;
-const REG_MODE = 35;
-const HARD_MODE = 25;
+const EASY_MODE = 22;
+const REG_MODE = 17;
+const HARD_MODE = 12;
 class Cell{
     constructor(value){
         this.value = value;
@@ -18,7 +21,21 @@ const solvedBoard = createEmptyBoard();
 const parseInput = (cellID,value)=>{
     let row = Math.floor(cellID / ROW_DIM);
     let col = cellID % COL_DIM;
-    gameBoard[row][col].value = Number(value); // string or Number ??
+    // if(isValidInput(gameBoard,row,col,Number(value))){ // should I validate ?
+    //     gameBoard[row][col].value = Number(value); // string or Number ??
+    //     return true;
+    // }
+    // return false;
+    gameBoard[row][col].value = Number(value);
+}
+
+const checkParseFixed = (cellID)=>{
+    let row = Math.floor(cellID / ROW_DIM);
+    let col = cellID % COL_DIM;
+    if(gameBoard[row][col].fixed){
+        return true;
+    }
+    return false;
 }
 
 // AUX
@@ -31,6 +48,43 @@ function createEmptyBoard(){
         }
     }
     return board;
+}
+
+const swapRows = (board,rowA,rowB)=>{
+    for(let j=0;j<COL_DIM;j++){
+        //SWAP;
+        let temp = board[rowA][j].value;
+        board[rowA][j].value = board[rowB][j].value;
+        board[rowB][j].value = temp;
+    }
+}
+
+const swapCols = (board,colA,colB)=>{
+    for(let i=0;i<ROW_DIM;i++){
+        //SWAP;
+        let temp = board[i][colA].value;
+        board[i][colA].value = board[i][colB].value;
+        board[i][colB].value = temp;
+    }
+}
+
+const randomizeBoard = (board)=>{
+    const rowSwaps = Math.floor(Math.random()*8);
+    const colSwaps = Math.floor(Math.random()*8);
+    for(let i=0;i<rowSwaps;i++){
+        let randBlock = Math.floor(Math.random()*3);
+        let randRowA = Math.floor(Math.random()*3);
+        let randRowB = Math.floor(Math.random()*3);
+        // SWAP ROWS OF SAME BLOCK
+        swapRows(board,randBlock*3 + randRowA,randBlock*3 + randRowB);
+    }
+    for(let i=0;i<colSwaps;i++){
+        let randBlock = Math.floor(Math.random()*3);
+        let randColA = Math.floor(Math.random()*3);
+        let randColB = Math.floor(Math.random()*3);
+        // SWAP COLUMNS OF SAME BLOCK
+        swapRows(board,randBlock*3 + randColA,randBlock*3 + randColB);
+    }
 }
 
 const clearBoard = (board)=>{
@@ -63,13 +117,26 @@ const copyBoards = (oldBoard,newBoard)=>{
 }
 
 const fixCells = (board,diff)=>{
-    let toFix = diff === 'Easy' ? EASY_MODE : diff === 'Regular' ? REG_MODE : HARD_MODE;
-    while(toFix > 0){
-        let randRow = Math.floor(Math.random()*9);
-        let randCol = Math.floor(Math.random()*9);
+    let pairsToFix = diff === 'Easy' ? EASY_MODE : diff === 'Regular' ? REG_MODE : HARD_MODE;
+    while(pairsToFix > 0){
+        let randRow = Math.floor(Math.random()*ROW_DIM);
+        let randCol = Math.floor(Math.random()*COL_DIM);
+        if(randRow === 4 && randCol === 4) continue; // You can always remove the middle cell (no Rot. Counterpart)
         if(!board[randRow][randCol].fixed){
+            // Calculate random cell's rotational counterpart and fix him as well.
+            let rotCounterRow = (ROW_DIM-1) - randRow;
+            let rotCounterCol = (COL_DIM-1) - randCol;
+            // Back-end
             board[randRow][randCol].fixed = true;
-            toFix--;
+            board[rotCounterRow][rotCounterCol].fixed = true;
+            // Front-end
+            let randCellID = randRow * COL_DIM + randCol;
+            let rotCounterCellID = rotCounterRow * COL_DIM + rotCounterCol;
+            let inputA = document.getElementById(randCellID.toString())
+            let inputB = document.getElementById(rotCounterCellID.toString())
+            inputA.classList.add('fixed');
+            inputB.classList.add('fixed');
+            pairsToFix--;
         }
     }
 }
@@ -127,7 +194,7 @@ const validateBoard = (gameBoard,solvedBoard)=>{
     const tempBoard = createEmptyBoard();
     copyBoards(gameBoard,tempBoard);
     if(btSolve(tempBoard)){
-        copyBoards(solvedBoard,tempBoard);
+        copyBoards(tempBoard,solvedBoard);
         return true;
     }
     return false;
@@ -177,5 +244,6 @@ const btSolve = (board)=>{
     }
     return 0;
 }
+
 
 

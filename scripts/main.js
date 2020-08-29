@@ -1,3 +1,12 @@
+const main = ()=>{
+    const container = document.querySelector('.container');
+    container.innerHTML = `
+    <button id="play-game" class="menuBtn">PLAY GAME</button>
+    `;
+    const playBtn = container.querySelector('#play-game');
+    playBtn.addEventListener('click',playGameEventListener);
+}
+
 const initGame = (diff)=>{
     container.classList.add('container-game');
     container.innerHTML = `
@@ -7,7 +16,9 @@ const initGame = (diff)=>{
     <div id="sidebar">
         <div id="tools">
         </div>
-        <div id="keyboard">
+        <div class="keyboard">
+        </div>
+        <div id="ui-messages">
         </div>
     </div>
     </div>
@@ -15,9 +26,12 @@ const initGame = (diff)=>{
     createHTMLBoard();
     clearBoard(gameBoard);
     randSolve(gameBoard);
+    randomizeBoard(gameBoard);
     copyBoards(gameBoard,solvedBoard);
     fixCells(gameBoard,diff);
     clearUnfixed(gameBoard);
     showBoard(gameBoard);
 }
+
+main();
 
