@@ -23,22 +23,27 @@ const createDifficultyBtns = ()=>{
 
 const createInputBoxBorders = (newInputBox,i)=>{
     // DEFAULT
-    newInputBox.style.border = '1px solid rgba(43, 42, 42, 0.3)';
+    // newInputBox.style.border = '1px solid rgba(43, 42, 42, 0.3)';
+    newInputBox.classList.add('border-all');
     // TOPS
     if( i%27>=0 && i%27<= 8){
-        newInputBox.style.borderTop = '2px solid black'
+        // newInputBox.style.borderTop = '2px solid black'
+        newInputBox.classList.add('border-bold-top');
     }
     // RIGHTS
     if( i%3 === 2){
-        newInputBox.style.borderRight = '2px solid black'
+        // newInputBox.style.borderRight = '2px solid black'
+        newInputBox.classList.add('border-bold-right');
     }
     // LEFTS
     if(i%9 === 0){
-        newInputBox.style.borderLeft = '2px solid black'
+        // newInputBox.style.borderLeft = '2px solid black'
+        newInputBox.classList.add('border-bold-left');
     }
     // BOTTOMS
     if(i>=72 && i<=80){
-        newInputBox.style.borderBottom = '2px solid black'
+        // newInputBox.style.borderBottom = '2px solid black'
+        newInputBox.classList.add('border-bold-bottom');
     }
     
 }
@@ -57,12 +62,12 @@ const createInputBoxes = (board)=>{
         input.addEventListener('focus',(e)=>{
             //Open Dropdown keyboard
             if(selectedInput){
-                selectedInput.classList.remove('selected')
+                selectedInput.parentElement.classList.remove('selected')
             }
             document.querySelector('.keyboard').style.display = 'grid';
             //save input location. (GLOBAL VARIABLE)
             selectedInput = e.target;
-            selectedInput.classList.add('selected')
+            selectedInput.parentElement.classList.add('selected')
             //clear ui-messages
             document.querySelector('#ui-messages').innerText = '';
         })
