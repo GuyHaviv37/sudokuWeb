@@ -87,7 +87,7 @@ const createNumberButtons = (parent)=>{
             let value = this.value;
             parseInput(selectedInput.id,value);
             selectedInput.value = Number(value);
-            parent.style.display = 'none';
+            //parent.style.display = 'none'; KEYBOARD DISAPPEAR ?
             if(isGameOver(gameBoard)){
                 // SUCCESS MESSAGE + RESET OPTIONS ONLY (Maybe an alert ??);
                 setTimeout(()=>{
@@ -113,7 +113,7 @@ const createClearButton = (parent)=>{
         }   
         // Front-end
         selectedInput.value = '';
-        parent.style.display = 'none';
+        //parent.style.display = 'none'; KEYBOARD DISAPPEAR ?
         // Back-end
         parseInput(selectedInput.id,0);
     });
@@ -140,7 +140,7 @@ const createHintButton = (parent)=>{
         let col = cellID % COL_DIM;
         selectedInput.value = solvedBoard[row][col].value;
         gameBoard[row][col].value = solvedBoard[row][col].value;
-        parent.style.display = 'none';
+        //parent.style.display = 'none'; KEYBOARD DISAPPEAR ?
         if(isGameOver(gameBoard)){
             // SUCCESS MESSAGE + RESET OPTIONS ONLY (Maybe an alert ??);
             setTimeout(()=>{

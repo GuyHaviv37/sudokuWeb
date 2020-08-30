@@ -16,7 +16,6 @@ const gameBoard = createEmptyBoard();
 const solvedBoard = createEmptyBoard();
 
 
-
 // PARSING
 const parseInput = (cellID,value)=>{
     let row = Math.floor(cellID / ROW_DIM);
