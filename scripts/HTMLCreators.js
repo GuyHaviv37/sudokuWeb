@@ -86,15 +86,17 @@ const createNumberButtons = (parent)=>{
             }
             // Front-End
             let value = this.value;
-            // if(parseInput(selectedInput.id,value)){
-            //     selectedInput.value = Number(value);
-            //     parent.style.display = 'none';
-            // }else{
-            //     document.querySelector('#ui-messages').innerText = "This value is invalid for this cell";
-            // }
             parseInput(selectedInput.id,value);
             selectedInput.value = Number(value);
             parent.style.display = 'none';
+            if(isGameOver(gameBoard)){
+                // SUCCESS MESSAGE + RESET OPTIONS ONLY (Maybe an alert ??);
+                setTimeout(()=>{
+                    if(confirm('Congratulations! You finished the puzzle. Click OK to play a new game.')){
+                        main();
+                    } 
+                },200)
+            }
         }.bind(numberBtn))
         parent.append(numberBtn)
     }
@@ -140,6 +142,14 @@ const createHintButton = (parent)=>{
         selectedInput.value = solvedBoard[row][col].value;
         gameBoard[row][col].value = solvedBoard[row][col].value;
         parent.style.display = 'none';
+        if(isGameOver(gameBoard)){
+            // SUCCESS MESSAGE + RESET OPTIONS ONLY (Maybe an alert ??);
+            setTimeout(()=>{
+                if(confirm('Congratulations! You finished the puzzle. Click OK to play a new game.')){
+                    main();
+                } 
+            },200)
+        }
     })
     parent.append(hintBtn);
 }

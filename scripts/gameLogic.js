@@ -3,7 +3,7 @@ Board generating is reliant upon : https://www.sudokuoftheday.com/about/difficul
 */
 const ROW_DIM = 9;
 const COL_DIM = 9;
-const EASY_MODE = 22;
+const EASY_MODE = 39;
 const REG_MODE = 17;
 const HARD_MODE = 12;
 class Cell{
@@ -107,6 +107,7 @@ const findEmptyCell = (gameBoard)=>{
     return ['NA','NA']
 }
 
+
 const copyBoards = (oldBoard,newBoard)=>{
     for(let i=0;i<ROW_DIM;i++){
         for(let j=0;j<COL_DIM;j++){
@@ -195,6 +196,59 @@ const validateBoard = (gameBoard,solvedBoard)=>{
     copyBoards(gameBoard,tempBoard);
     if(btSolve(tempBoard)){
         copyBoards(tempBoard,solvedBoard);
+        return true;
+    }
+    return false;
+}
+
+// CONFIRMERS
+const isGameOver = (gameBoard,cellID,value)=>{
+    const [emptyRow,emptyCol] = findEmptyCell(gameBoard);
+    if((emptyRow==='NA' || emptyCol==='NA') && confirmSolution(gameBoard)){
+        return true;
+    }
+    return false;
+}
+
+const confirmRows = (board)=>{
+    for(let i=0;i<ROW_DIM;i++){
+        let rowSet = new Set();
+        for(let j=0;j<COL_DIM;j++){
+            if(!rowSet.has(board[i][j].value)) rowSet.add(board[i][j].value)
+            else return false;
+        }
+    }
+    return true;
+}
+const confirmCols = (board)=>{
+    for(let j=0;j<COL_DIM;j++){
+        let colSet = new Set();
+        for(let i=0;i<ROW_DIM;i++){
+            if(!colSet.has(board[i][j].value)) colSet.add(board[i][j].value)
+            else return false;
+        }
+    }
+    return true;
+}
+const confirmBlocks = (board)=>{
+    for(let k=0;k<9;k++){
+        let blockSet = new Set();
+        // rows : Math.floor(blockNum/3)
+        // cols : blockNum % 3  - blockNum%3 + 2
+        let rowStart = Math.floor(k/3) * 3;
+        let colStart = k%3 * 3;
+        for(let i=rowStart;i<rowStart+3;i++){
+            for(let j=colStart;j<colStart+3;j++){
+                if(!blockSet.has(board[i][j].value)) blockSet.add(board[i][j].value)
+                else return false;
+            }
+        }
+    }
+    return true;
+}
+
+const confirmSolution = (board)=>{
+    if(confirmRows(board) && confirmCols(board) && confirmBlocks(board)){
         return true;
     }
     return false;
