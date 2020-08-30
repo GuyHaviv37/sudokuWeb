@@ -3,7 +3,7 @@ Board generating is reliant upon : https://www.sudokuoftheday.com/about/difficul
 */
 const ROW_DIM = 9;
 const COL_DIM = 9;
-const EASY_MODE = 39;
+const EASY_MODE = 22;
 const REG_MODE = 17;
 const HARD_MODE = 12;
 class Cell{
@@ -192,6 +192,10 @@ const isValidInput = (board,row,col,value)=>{
 }
 
 const validateBoard = (gameBoard,solvedBoard)=>{
+    const [emptyRow,emptyCol] = findEmptyCell(gameBoard);
+    if((emptyRow==='NA' || emptyCol==='NA')){
+        return confirmSolution(gameBoard);
+    }
     const tempBoard = createEmptyBoard();
     copyBoards(gameBoard,tempBoard);
     if(btSolve(tempBoard)){

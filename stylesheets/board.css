@@ -130,6 +130,9 @@
 
 .inputBox{
     position: relative;
+    display : flex;
+    padding : 1px;
+    place-content: center;
 }
 
 input{

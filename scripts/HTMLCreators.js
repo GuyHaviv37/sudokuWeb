@@ -1,7 +1,6 @@
 const container = document.querySelector('.container');
 let selectedInput;
 
-
 const playGameEventListener = ()=>{
     const playGameBtn = document.querySelector('#play-game');
     playGameBtn.remove();
