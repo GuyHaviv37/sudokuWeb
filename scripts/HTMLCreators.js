@@ -56,9 +56,13 @@ const createInputBoxes = (board)=>{
         let input = newInputBox.querySelector('input');
         input.addEventListener('focus',(e)=>{
             //Open Dropdown keyboard
+            if(selectedInput){
+                selectedInput.classList.remove('selected')
+            }
             document.querySelector('.keyboard').style.display = 'grid';
             //save input location. (GLOBAL VARIABLE)
             selectedInput = e.target;
+            selectedInput.classList.add('selected')
             //clear ui-messages
             document.querySelector('#ui-messages').innerText = '';
         })
