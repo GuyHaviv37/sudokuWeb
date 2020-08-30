@@ -51,7 +51,7 @@ const createInputBoxes = (board)=>{
         newInputBox.classList.add('inputBox');
         newInputBox.innerHTML = `
         <input type="number" max="9" min="0" id="${i}" readonly>
-        <div class="hints">${i}</div>
+        <!-- <div class="hints">${i}</div> -->
         `;
         createInputBoxBorders(newInputBox,i);
         let input = newInputBox.querySelector('input');
