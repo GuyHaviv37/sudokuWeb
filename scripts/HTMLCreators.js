@@ -186,12 +186,7 @@ const createResetButton = (parent)=>{
     resetBtn.innerText = "Reset Game";
     resetBtn.classList.add('tools-button');
     resetBtn.addEventListener('click',(e)=>{
-        const container = document.querySelector('.container');
-        container.innerHTML = `
-        <button id="play-game" class="menuBtn">PLAY GAME</button>
-        `;
-        const playBtn = container.querySelector('#play-game');
-        playBtn.addEventListener('click',playGameEventListener);
+        main();
     })
     parent.append(resetBtn);
 }
