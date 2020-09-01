@@ -113,7 +113,7 @@ const createNumberButtons = (parent)=>{
 const createClearButton = (parent)=>{
     let clearBtn = document.createElement('button');
     clearBtn.id = "clear-button";
-    clearBtn.innerText = 'CLEAR';
+    clearBtn.innerText = 'Clear';
     // EVENT LISTENER;
     clearBtn.addEventListener('click',function(e){
         if(checkParseFixed(selectedInput.id)){

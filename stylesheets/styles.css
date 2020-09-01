@@ -1,33 +1,37 @@
+html{
+    font-size : 62.5%; 
+}
 body{
     margin : 0;
-    padding : 5px;
+    padding : 0.5rem;
     height : 100vh;
     background-image : linear-gradient(to right bottom,rgba(129, 129, 129, 0.75),rgba(0, 0, 0, 0.75)),url(../imgs/numbers_bg.png);
     background-size : cover; /* Always cover the viewport*/
     background-position: top; /* fix image from it's top when responsive*/
 
     font-family: 'Lato',sans-serif;
+    font-weight: 400;
 }
 .board{
     background : white;
 }
 #tools button , .menuBtn{
-    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	background:linear-gradient(180deg, rgba(6,78,158,1) 5%, rgb(61, 135, 219) 100%);
-	background-color:#338be2;   
+    box-shadow: 0 0.5rem 1rem 0px rgba(88, 88, 88, 0.75);
+	background:linear-gradient(to bottom, rgba(88, 88, 88, 0.75) 30%, rgba(0, 0, 0, 0.75) 100%);
+	background-color:grey;   
 	border-radius:6px;
-	border:1px solid #04284d;
+	border:1px solid #000000;
 	cursor:pointer;
 	color:#ffffff;
-	font-size:15px;
-	font-weight:bold;
+    font-weight:bold;
+    letter-spacing: 1px;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #528ecc;
 }
 .keyboard button{
-    box-shadow: 0px 5px 5px -3px rgb(61, 135, 219);
-	background-color:rgb(98, 200, 231);
+    box-shadow: 0px 0.5rem 0.5rem -0.3rem rgb(13, 13, 14);
+    background: linear-gradient(to bottom, rgba(133, 133, 133, 0.897) 25%,rgb(102, 102, 102) 100%);
+    background-color : white;
 	border-radius:4px;
 	cursor:pointer;
     color:#ffffff;
@@ -37,26 +41,42 @@ body{
 #ui-messages{
     font-weight: bold;
     letter-spacing: 1px;
-    font-family: monospace;
     color : white;
 }
 @media screen and (orientation: landscape){
     #ui-messages{
-        font-size : 16px;
+        font-size : 1.6rem;
     }
 }
 @media screen and (orientation: portrait){
     #ui-messages{
-        font-size : 20px;
+        font-size : 2rem;
     }
 }
 .fixed{
-    font-weight: bold;
+    font-weight: 900;
     color: rgba(43, 42, 42, 0.795);
 }
 input,button{
     outline: none;
+    font-family: inherit;
+    font-size : 1.7rem;
 }
+
+input{
+    font-weight: 700;
+}
+
+@media screen and (min-width: 768px){
+    input,button{
+        font-size : 2rem;
+    } 
+    body{
+        padding: 1rem 5rem;
+    }
+}
+
+/*BORDER CLASSES*/
 
 .border-all{
     border: 1px solid rgba(43, 42, 42, 0.3);
@@ -82,6 +102,6 @@ input,button{
 }
 @media screen and (min-width: 320px) and (max-width: 767px){
     .selected{
-        border: 1px solid gold;
+        border: 2px solid gold;
     }
 }

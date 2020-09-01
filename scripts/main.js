@@ -1,7 +1,7 @@
 const main = ()=>{
     const container = document.querySelector('.container');
     container.innerHTML = `
-    <button id="play-game" class="menuBtn">PLAY GAME</button>
+    <button id="play-game" class="menuBtn">Play Game</button>
     `;
     const playBtn = container.querySelector('#play-game');
     playBtn.addEventListener('click',playGameEventListener);
