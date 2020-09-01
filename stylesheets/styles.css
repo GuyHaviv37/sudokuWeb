@@ -1,7 +1,12 @@
 body{
+    margin : 0;
+    padding : 5px;
     height : 100vh;
-    background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(21,21,215,1) 27%, rgba(6,78,158,1) 60%, rgba(0,212,255,1) 100%);
+    background-image : linear-gradient(to right bottom,rgba(129, 129, 129, 0.75),rgba(0, 0, 0, 0.75)),url(../imgs/numbers_bg.png);
+    background-size : cover; /* Always cover the viewport*/
+    background-position: top; /* fix image from it's top when responsive*/
+
+    font-family: 'Lato',sans-serif;
 }
 .board{
     background : white;
@@ -77,6 +82,6 @@ input,button{
 }
 @media screen and (min-width: 320px) and (max-width: 767px){
     .selected{
-        border: 2px solid gold;
+        border: 1px solid gold;
     }
 }

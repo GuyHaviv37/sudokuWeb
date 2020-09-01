@@ -1,11 +1,11 @@
 .container{
-    width : 95vw;
-    height : 95vh;
+    height : 100vh;
     display: grid;
     justify-content: center;
     align-content: center;
 }
 .menuBtn{
+    /*These can be fixed..*/
     width : 150px;
     height : 50px;
     margin : 10px;
