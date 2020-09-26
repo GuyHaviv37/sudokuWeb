@@ -2,106 +2,6 @@
     height : 90vh;
     display : grid;
 }
-/* MOBILE */
-@media screen and (min-width: 320px) and (max-width: 767px){
-    #clear-button{
-        grid-column: 1/4 ;
-    }
-    #hint-button{
-        grid-column: 1/4 ; 
-    }
-    .number-button{
-        height: 35px;
-        width: 95%;
-    }
-    .hints{
-        font-size : 0.8rem;
-    }
-}
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-    .board-container{
-        grid-template: 2fr 1fr / 1fr;
-        row-gap : 5px;
-    }
-    input{
-        font-size : 1rem;
-    }
-    .keyboard{
-        grid-template-rows: repeat(3,1fr);
-        grid-template-columns: 1fr 1fr 3fr;
-    }
-    #sidebar{
-        grid-template-rows : 1fr 1fr;
-        grid-template-columns : 1fr 1fr;
-    }
-    #tools{
-        grid-row: 1;
-    }
-    #ui-messages{
-        grid-row: 2;
-    }
-    .keyboard{
-        grid-column: 2;
-        grid-row: 1/3;
-    }
-}
-@media screen and (min-width: 320px) and (max-width: 1023px) and (orientation: landscape) {
-    .board-container{
-        grid-template : auto / 5fr 1fr;
-        column-gap: 5px;  
-    }
-    #sidebar{
-        grid-template-rows : 1fr 3fr 1fr;
-    }
-    input{
-        font-size : 1.3rem;
-    }
-    #clear-button{
-        grid-column: 1/4 ;
-    }
-    #hint-button{
-        grid-column: 1/4 ;
-    }
-    .number-button{
-        height: 95%;
-        width: 95%;
-    }
-    
-}
-/* NON MOBILE */
-@media screen and (min-width:1024px){
-    .board-container{
-        grid-template : auto / 5fr 1fr
-    }
-    #sidebar{
-        grid-template-rows : 1fr 3fr 1fr;
-    }
-    .number-button{
-        align-self: center;
-    }
-    #clear-button{
-        grid-column: 1/4 ;
-        height : 40px;
-    }
-    #hint-button{
-        grid-column: 1/4 ;
-        height : 40px; 
-        align-self: flex-end;
-    }
-    .number-button{
-        height: 95%;
-        width: 95%;
-    }
-    input{
-        font-size : 1.8rem;
-    }
-    .hints{
-        font-size : 1.1rem;
-    }
-    #ui-messages{
-        font-size: 1.5rem;
-    }
-}
 
 .board{
     display : grid;
@@ -161,3 +61,124 @@ input{
     left : 0px;
     color : grey;
 }
+
+
+/* MOBILE */
+
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+    .board-container{
+        grid-template : auto / 5fr 1fr;
+        column-gap: 5px;  
+    }
+    #sidebar{
+        grid-template-rows : 1fr 3fr 1fr;
+    }
+    input{
+        font-size : 1.3rem;
+    }
+    #clear-button{
+        grid-column: 1/4 ;
+    }
+    #hint-button{
+        grid-column: 1/4 ;
+    }
+    .number-button{
+        height: 95%;
+        width: 95%;
+    }
+    
+}
+
+@media screen  and (max-width: 1024px) and (orientation: portrait) {
+    .board-container{
+        grid-template: 2fr 1fr / 1fr;
+        row-gap : 5px;
+    }
+    input{
+        font-size : 1rem;
+    }
+
+    #sidebar{
+        grid-template-rows : 1fr 1fr;
+        grid-template-columns : 1fr 1fr;
+    }
+    #tools{
+        grid-row: 1;
+    }
+    #ui-messages{
+        grid-row: 2;
+    }
+    .keyboard{
+        grid-column: 2;
+        grid-row: 1/3;
+    }
+    #clear-button{
+        grid-column: 1/4 ;
+    }
+    #hint-button{
+        grid-column: 1/4 ;
+    }
+    .number-button{
+        height: 95%;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 767px){
+    #clear-button{
+        grid-column: 1/4 ;
+    }
+    #hint-button{
+        grid-column: 1/4 ; 
+    }
+    .number-button{
+        height: 35px;
+        width: 95%;
+    }
+    .hints{
+        font-size : 0.8rem;
+    }
+    .number-button{
+        height: 95%;
+        width: 95%;
+    }
+}
+
+
+
+/* NON MOBILE */
+
+@media screen and (min-width:1024px){
+    .board-container{
+        grid-template : auto / 5fr 1fr
+    }
+    #sidebar{
+        grid-template-rows : 1fr 3fr 1fr;
+    }
+    .number-button{
+        align-self: center;
+    }
+    #clear-button{
+        grid-column: 1/4 ;
+        height : 40px;
+    }
+    #hint-button{
+        grid-column: 1/4 ;
+        height : 40px; 
+        align-self: flex-end;
+    }
+    .number-button{
+        height: 95%;
+        width: 95%;
+    }
+    input{
+        font-size : 1.8rem;
+    }
+    .hints{
+        font-size : 1.1rem;
+    }
+    #ui-messages{
+        font-size: 1.5rem;
+    }
+}
+
